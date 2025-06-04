@@ -1,5 +1,10 @@
 async function loadProducts() {
-  const response = await fetch("https://fakestoreapi.com/products");
+  const response = await fetch("https://fakestoreapi.com/products", {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
   const products = await response.json();
   displayProducts(products);
 }
@@ -22,7 +27,6 @@ function displayProducts(products) {
     img.alt = `product: ${product.title}`;
     img.width = 250;
     img.loading = "lazy"; // 지연 로딩추가
-    img.decoding = "async"; // 비동기 추가
     pictureDiv.appendChild(img);
 
     // Create the product info div
