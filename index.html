@@ -6,33 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Tech Shop</title>
 
-    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fakestoreapi.com" />
+
     <link
-      href="https://fonts.googleapis.com/css?family=Heebo:300,400,600,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/preloadCSS.css" />
     <link
       rel="preload"
       href="/css/styles.css"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript><link rel="stylesheet" href="/css/styles.css" /></noscript>
+
+    <noscript>
+      <link rel="stylesheet" href="/css/styles.css" />
+    </noscript>
 
     <!-- <link rel="stylesheet" type="text/css" href="/css/slick.css"/> -->
     <!-- Google Tag Manager + async 추가-->
+    <!-- Google Tag Manager -->
     <script async>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
-        w[l].push({
-          "gtm.start": new Date().getTime(),
-          event: "gtm.js",
-        });
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
         var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s),
           dl = l != "dataLayer" ? "&l=" + l : "";
@@ -51,16 +52,20 @@
       charset="UTF-8"
     ></script>
     <script defer type="text/javascript" charset="UTF-8">
-      cookieconsent.run({
-        notice_banner_type: "simple",
-        consent_type: "express",
-        palette: "light",
-        language: "en",
-        page_load_consent_levels: ["strictly-necessary"],
-        notice_banner_reject_button_hide: false,
-        preferences_center_close_button_hide: false,
-        page_refresh_confirmation_buttons: false,
-        website_name: "Performance Course",
+      window.addEventListener("load", function () {
+        if (window.cookieconsent) {
+          cookieconsent.run({
+            notice_banner_type: "simple",
+            consent_type: "express",
+            palette: "light",
+            language: "en",
+            page_load_consent_levels: ["strictly-necessary"],
+            notice_banner_reject_button_hide: false,
+            preferences_center_close_button_hide: false,
+            page_refresh_confirmation_buttons: false,
+            website_name: "Performance Course",
+          });
+        }
       });
     </script>
   </head>
@@ -105,45 +110,30 @@
     </header>
 
     <section class="hero">
-      <!-- <img class="desktop" src="images/Hero_Desktop.jpg" />
-            <img class="mobile" src="images/Hero_Mobile.jpg" />
-            <img class="tablet" src="images/Hero_Tablet.jpg" /> -->
-
-      <picture>
-        <!-- 모바일: 576px 이하 -->
+      <picture class="hero-image">
         <source
-          media="(max-width: 576px)"
           srcset="images/Hero_Mobile.webp"
+          media="(max-width: 575px)"
           type="image/webp"
         />
         <source
-          media="(max-width: 576px)"
-          srcset="images/Hero_Mobile.jpg"
-          type="image/jpeg"
-        />
-
-        <!-- 태블릿: 577px ~ 960px -->
-        <source
-          media="(max-width: 960px)"
           srcset="images/Hero_Tablet.webp"
+          media="(min-width: 576px) and (max-width: 959px)"
           type="image/webp"
         />
-        <source
-          media="(max-width: 960px)"
-          srcset="images/Hero_Tablet.jpg"
-          type="image/jpeg"
-        />
-
-        <!-- 데스크톱: 961px 이상 (기본값) -->
-        <source srcset="images/Hero_Desktop.webp" type="image/webp" />
-
-        <!-- 폴백: WebP 지원 안하는 브라우저용 -->
         <img
-          src="images/Hero_Desktop.jpg"
-          alt="VR 헤드셋으로 가상현실을 체험하는 모습"
-          loading="eager"
+          src="images/Hero_Desktop.webp"
+          alt="VR Banner Image"
+          width="1440"
+          height="810"
           fetchpriority="high"
-          style="width: 100%; height: auto; filter: brightness(50%)"
+          style="
+            object-fit: cover;
+            aspect-ratio: 16/9;
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+          "
         />
       </picture>
 
