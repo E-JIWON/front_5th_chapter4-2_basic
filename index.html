@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Tech Shop</title>
 
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css?family=Heebo:300,400,600,700&display=swap"
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/css/styles.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/preloadCSS.css" />
+    <link
+      rel="preload"
+      href="/css/styles.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/css/styles.css" /></noscript>
 
     <!-- <link rel="stylesheet" type="text/css" href="/css/slick.css"/> -->
     <!-- Google Tag Manager + async 추가-->
@@ -134,6 +142,7 @@
           src="images/Hero_Desktop.jpg"
           alt="VR 헤드셋으로 가상현실을 체험하는 모습"
           loading="eager"
+          fetchpriority="high"
           style="width: 100%; height: auto; filter: brightness(50%)"
         />
       </picture>
