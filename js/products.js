@@ -1,10 +1,5 @@
 async function loadProducts() {
-  const response = await fetch("https://fakestoreapi.com/products", {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  });
+  const response = await fetch("https://fakestoreapi.com/products");
   const products = await response.json();
   displayProducts(products);
 }
@@ -12,6 +7,7 @@ async function loadProducts() {
 function displayProducts(products) {
   // Find the container where products will be displayed
   const container = document.querySelector("#all-products .container");
+  const fragment = document.createDocumentFragment();
 
   // Iterate over each product and create the HTML structure safely
   products.forEach((product) => {
@@ -26,7 +22,7 @@ function displayProducts(products) {
     img.src = product.image;
     img.alt = `product: ${product.title}`;
     img.width = 250;
-    img.loading = "lazy"; // 지연 로딩추가
+    img.loading = "lazy";
     pictureDiv.appendChild(img);
 
     // Create the product info div
@@ -60,13 +56,12 @@ function displayProducts(products) {
     productElement.appendChild(pictureDiv);
     productElement.appendChild(infoDiv);
 
-    // Append the new product element to the container
-    container.appendChild(productElement);
+    fragment.appendChild(productElement);
   });
+  container.appendChild(fragment);
 }
 
 loadProducts();
-
 // 불필요한 연산 지움
 // Simulate heavy operation. It could be a complex price calculation.
 // for (let i = 0; i < 10000000; i++) {
